@@ -1,100 +1,90 @@
 Reactive Control Maze Navigation Robot
-Overview
 
-This project implements a reactive control system for a mobile robot designed to navigate a maze using bump sensors. The robot follows the "right-hand rule" to traverse the maze effectively. It is programmed using an Arduino microcontroller with the Ardumoto motor shield, and the control logic ensures simple, reliable, and adaptive navigation through the maze.
+A reactive control system for a mobile robot to navigate a maze using bump sensors and a "right-hand rule" algorithm. This project demonstrates real-time obstacle avoidance and wall-following capabilities, implemented with Arduino and the Ardumoto motor shield.
+Table of Contents
+
+    Features
+    Hardware Components
+    Project Setup
+    How It Works
+    Results
+    Possible Improvements
+    Authors
+
 Features
 
-    Reactive Control Algorithm: Employs a "right-hand rule" navigation strategy.
-    Bump Sensor Integration: Detects obstacles and adjusts the robot's path.
-    Right-Hand Bias: Maintains alignment with the maze walls.
-    Simple Button Start/Stop: Allows easy control of the robot's operation.
-    Modular Functions: Includes reusable functions for motor control and system initialization.
+    Reactive Control: Uses bump sensors for real-time obstacle detection and path adjustment.
+    Wall-Following Algorithm: Implements the "right-hand rule" for maze navigation.
+    Simple Operation: Start and stop the robot using a push button.
+    Modular Code: Reusable functions for motor control and system setup.
 
-Components
+Hardware Components
 
-    Arduino Uno: The main microcontroller.
-    Ardumoto Shield: Controls the motors.
-    Two DC Motors: Drive the left and right wheels.
-    Bump Sensors: Mounted on the front to detect obstacles.
+    Arduino Uno: Microcontroller for logic and motor control.
+    Ardumoto Shield: Drives the motors and handles PWM control.
+    DC Motors: Left and right motors for movement.
+    Bump Sensors: Detect obstacles and trigger navigation adjustments.
     Push Button: Starts and stops the robot.
-    Power Supply: Powers the motors and Arduino.
+    Power Supply: Battery pack for Arduino and motors.
 
-Project Structure
+Project Setup
+Wiring Diagram
 
-.
-├── Reactive_Control_Code.ino      # Main Arduino code
-├── README.md                      # Project documentation
-└── Lab_Report.pdf                 # Detailed analysis and results
+    Motor A:
+        PWM (speed): Pin 3
+        Direction: Pin 12
+    Motor B:
+        PWM (speed): Pin 11
+        Direction: Pin 13
+    Bump Sensors:
+        Left sensor: Pin 2
+        Right sensor: Pin 6
+    Push Button: Pin 7
+
+Software Requirements
+
+    Arduino IDE: Download here
+
+Steps to Run
+
+    Clone the repository:
+
+    git clone https://github.com/yourusername/reactive-control-robot.git
+
+    Open the Reactive_Control_Code.ino file in the Arduino IDE.
+    Connect the Arduino to your computer.
+    Compile and upload the code to the Arduino board.
 
 How It Works
 
-    Setup: The bump sensors and motors are configured, and the Arduino initializes the system.
+    Start: Press the push button to activate the robot.
     Navigation:
-        The robot drives forward with a slight right-hand bias to follow the wall.
-        If the left bump sensor is triggered, the robot reverses and turns slightly left.
-        If the right bump sensor is triggered, the robot reverses and turns sharply right.
-    Stop: The robot halts when the push button is pressed again.
+        Moves forward with a slight right-hand bias.
+        Adjusts path based on bump sensor input:
+            Left bump sensor → Reverse and turn slightly left.
+            Right bump sensor → Reverse and turn sharply right.
+    Stop: Press the push button again to halt the robot.
 
-Algorithm Flow
+Core Algorithm
 
-    Start the robot with the push button.
-    Continuously check bump sensor states while driving forward.
-    React to sensor input:
-        Left bump sensor: Reverse and turn left slightly.
-        Right bump sensor: Reverse and turn right sharply.
-    Stop if the push button is pressed.
-
-Control Logic
-
-    Right-Hand Rule: Ensures the robot follows the maze's right-hand wall.
-    Reactive Adjustments: Immediate response to sensor triggers for real-time obstacle avoidance.
-
-Hardware Setup
-
-    Wiring:
-        Connect the bump sensors to pins 2, 6, and 7 on the Arduino.
-        Attach motor control pins as follows:
-            Motor A: Speed on pin 3, direction on pin 12.
-            Motor B: Speed on pin 11, direction on pin 13.
-        Push button on pin 7.
-    Power:
-        Ensure the motors and Arduino are powered appropriately.
-    Assembly:
-        Attach bump sensors and motors securely to the robot chassis.
-
-Software Setup
-
-    Install the Arduino IDE.
-    Open the Reactive_Control_Code.ino file.
-    Connect the Arduino to your computer and upload the code.
-
-Usage Instructions
-
-    Press the push button to start the robot.
-    Place the robot at the maze's entrance.
-    Observe the robot navigate using the right-hand rule.
-    Press the push button again to stop the robot.
+    Right-Hand Rule: Keeps the robot aligned with the maze's right-hand wall.
+    Reactive Adjustments: Immediate response to sensor triggers for seamless navigation.
 
 Results
 
-    Performance: The robot consistently completes the maze with an average time of 51.3 seconds (tested over three runs).
-    Key Observations:
-        Effective wall-following using a reactive control algorithm.
-        Simple and robust logic for obstacle handling.
+    Performance: Successfully completed the maze in an average of 51.3 seconds across three runs.
+    Observations:
+        Reliable navigation using reactive control.
+        Efficient obstacle handling with simple logic.
 
 Possible Improvements
 
-    Add logic to detect and escape from corners more efficiently.
-    Include feedback mechanisms for error correction.
-    Enhance navigation speed with optimized motor control.
-
-References
-
-    "Maze Solving Algorithm." Wikipedia. Wikimedia Foundation, 23 Jan. 2017.
-    "Maze Solver Robot, Using Artificial Intelligence." Arduino Project Hub.
+    Add advanced corner detection and escape logic.
+    Implement feedback loops for error correction.
+    Optimize motor speeds for faster navigation.
 
 Authors
 
     Andrew Conners
     Yer Yang
-    Team #: 408
+    Team #408 | Lab #3: Reactive Control
