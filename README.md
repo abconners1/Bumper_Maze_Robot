@@ -87,4 +87,3 @@ Authors
 
     Andrew Conners
     Yer Yang
-    Team #408 | Lab #3: Reactive Control
